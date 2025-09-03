@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Birthday Paro ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#0f1021; --bg2:#24133a;
+    --accent:#ff6b9f; --accent2:#ffd166; --spark:#fff;
+    --text:#f6f7fb; --glass:rgba(255,255,255,0.08); --shadow:0 10px 30px rgba(0,0,0,0.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Poppins,sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text);overflow: auto; /* <-- changed from hidden to auto */}
+  
+  /* Opening screen */
+  .opening{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#1a1a2e,#16213e);z-index:1000;flex-direction:column;text-align:center}
+  .opening h1{font-size:40px;font-family:"Great Vibes",cursive;margin-bottom:20px;color:#ffd1e1;text-shadow:0 0 20px #ff6b9f}
+  .open-btn{background:var(--accent);border:none;color:#fff;font-size:22px;padding:14px 32px;
+    border-radius:40px;cursor:pointer;font-weight:600;box-shadow:0 8px 24px rgba(255,107,159,.4);transition:.3s}
+  .open-btn:hover{transform:scale(1.1)}
+
+  .wrap{display:grid;place-items:center;min-height:100%;padding:20px}
+  .card{position:relative;width:min(740px,92vw);padding:30px;border-radius:22px;
+    background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);
+    box-shadow:var(--shadow);display:none;text-align:center}
+  .title h1{font-family:"Great Vibes",cursive;font-size:clamp(44px,7vw,72px);text-shadow:0 4px 20px rgba(255,107,159,.35)}
+  
+  .photo{width:140px;height:140px;border-radius:50%;border:4px solid rgba(255,255,255,.6);
+    box-shadow:0 0 30px rgba(255,107,159,.7),0 0 60px rgba(255,209,102,.4);
+    object-fit:cover;margin:12px auto 18px;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+  .big-heart{position:relative;width:100px;height:100px;margin:10px auto;
+    transform:rotate(-45deg);background:var(--accent);filter:drop-shadow(0 16px 30px rgba(255,107,159,.35));
+    animation:beat 1.2s ease-in-out infinite}
+  .big-heart::before,.big-heart::after{content:"";position:absolute;width:100px;height:100px;background:var(--accent);border-radius:50%}
+  .big-heart::before{top:-50px;left:0}.big-heart::after{left:50px;top:0}
+  @keyframes beat{0%,100%{transform:rotate(-45deg) scale(1)}50%{transform:rotate(-45deg) scale(1.12)}}
+
+  .msg{font-size:18px;line-height:1.6;margin:16px auto;max-width:60ch}
+  .type{border-right:2px solid #fff;animation:caret .9s steps(1) infinite;white-space:pre-wrap}
+  @keyframes caret{50%{border-color:transparent}}
+
+  .marquee{overflow:hidden;border-top:1px dashed rgba(255,255,255,.2);margin-top:14px}
+  .marquee-track{white-space:nowrap;display:inline-block;padding:10px 0;
+    animation:scroll 20s linear infinite;font-weight:600}
+  .marquee b{color:#ffd1e1}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .footer{font-size:15px;margin-top:12px;opacity:.8}
+
+  .float-layer,.balloon-layer,.sparkle-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+  .heart{position:absolute;width:20px;height:20px;transform:rotate(-45deg);background:var(--accent);opacity:.9;
+         filter:drop-shadow(0 6px 12px rgba(255,107,159,.3));animation:floatUp var(--dur,8s) linear forwards}
+  .heart::before,.heart::after{content:"";position:absolute;width:20px;height:20px;background:var(--accent);border-radius:50%}
+  .heart::before{top:-10px;left:0}.heart::after{left:10px;top:0}
+  @keyframes floatUp{0%{transform:translateY(20vh) rotate(-45deg);opacity:0}10%{opacity:1}100%{transform:translateY(-120vh) rotate(-45deg);opacity:0}}
+
+  .balloon{position:absolute;width:28px;height:36px;border-radius:50% 50% 45% 45%;background:var(--accent2);
+    box-shadow:0 6px 16px rgba(0,0,0,.25);animation:rise var(--bdur,12s) ease-in forwards}
+  .balloon::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);width:2px;height:40px;background:rgba(255,255,255,.6)}
+  @keyframes rise{0%{transform:translateY(120vh)}100%{transform:translateY(-140vh)}}
+
+  .sparkle{position:absolute;width:4px;height:4px;background:var(--spark);border-radius:50%;opacity:0.8;
+           animation:twinkle var(--sdur,4s) ease-in-out infinite}
+  @keyframes twinkle{0%,100%{opacity:0.2;transform:scale(0.5)}50%{opacity:1;transform:scale(1.3)}}
+</style>
+</head>
+<body>
+<!-- Opening -->
+<div class="opening" id="opening">
+  <h1>💖 A Special Surprise For You Paro From Your Para Beta 💖</h1>
+  <button class="open-btn" onclick="openCard()">Open Your Pari Birthday Wish</button>
+</div>
+
+<audio id="bgm" loop>
+  <source src="/Users/armaanbukhari/Downloads/'Tu Jo Mila' VIDEO Song - K.K. Pritam | Salman Khan, Nawazuddin, Harshaali | Bajrangi Bhaijaan.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Hidden Card -->
+<div class="float-layer"></div>
+<div class="balloon-layer"></div>
+<div class="sparkle-layer"></div>
+
+<div class="wrap">
+  <div class="card" id="card">
+    <img class="photo" src="/Users/armaanbukhari/Downloads/IMG_9724.JPG" alt="Paro">
+    <div class="title"><h1>Happy Birthday,to the most pari ma my Paro 🎂</h1></div>
+    <div class="big-heart"></div>
+    <p class="msg subtitle">This is from my heart, only for you ♥️</p>
+    <p id="typewriter" class="msg type"></p>
+    <div class="marquee"><div class="marquee-track">
+      💖 <b>Happy Birthday to the most pari ma Paro</b> • I miss you deeply • I love you endlessly • May Allah bless you always • InshaAllah one day I will fullfil all your dreams • You are my first teacher, my guide and my best friend •
+    </div></div>
+    <div class="footer">— With endless love, Para beta Armaan</div>
+  </div>
+</div>
+<script>
+const LINES=[
+  "My dearest Paro,",
+  "Happy Birthday! 🎉",
+  "Even though we are apart today, my heart is always with you.",
+  "I miss you so much, every single day.",
+  "I love you more than words can ever say ❤️",
+  "I pray that Allah blesses you with health, joy and long life. Ameen.",
+  "And I hope that next year, InshaAllah, we will celebrate together again 🌹",
+  "You are the Parest Ma in the world, and I am so grateful to have you in my life.",
+  "I miss your smile , your laugh, your warmth.",
+  "On your special day, Iwant you to know that you are the most person for me.",
+  "Every success that I achieve is because of her support and blessings."
+];
+
+const floatLayer=document.querySelector('.float-layer');
+const balloonLayer=document.querySelector('.balloon-layer');
+const sparkleLayer=document.querySelector('.sparkle-layer');
+const typeTarget=document.getElementById('typewriter');
+const card=document.getElementById('card');
+const opening=document.getElementById('opening');
+const bgm=document.getElementById('bgm');
+
+async function typeLines(lines){
+  typeTarget.textContent='';
+  for(const line of lines){
+    await typeLine(line);await wait(900);
+    typeTarget.textContent+="\n";
+  }
+}
+function typeLine(text){return new Promise(res=>{
+  let i=0;const speed=35;
+  const t=setInterval(()=>{typeTarget.textContent+=text.charAt(i++);if(i>=text.length){clearInterval(t);res();}},speed);
+});}
+const wait=(ms)=>new Promise(r=>setTimeout(r,ms));
+
+function spawnHeart(){const h=document.createElement('div');h.className='heart';
+  h.style.left=Math.random()*window.innerWidth+'px';h.style.bottom='-40px';
+  h.style.setProperty('--dur',(6+Math.random()*6)+'s');floatLayer.appendChild(h);
+  h.addEventListener('animationend',()=>h.remove());}
+function spawnBalloon(){const b=document.createElement('div');b.className='balloon';
+  b.style.left=Math.random()*window.innerWidth+'px';b.style.bottom='-60px';
+  b.style.setProperty('--bdur',(10+Math.random()*8)+'s');balloonLayer.appendChild(b);
+  b.addEventListener('animationend',()=>b.remove());}
+function spawnSparkle(){const s=document.createElement('div');s.className='sparkle';
+  s.style.left=Math.random()*window.innerWidth+'px';s.style.top=Math.random()*window.innerHeight+'px';
+  s.style.setProperty('--sdur',(3+Math.random()*3)+'s');sparkleLayer.appendChild(s);
+  setTimeout(()=>s.remove(),4000);}
+
+function intro(){for(let i=0;i<20;i++) setTimeout(spawnHeart,i*150);
+  for(let i=0;i<8;i++) setTimeout(spawnBalloon,i*500);
+  for(let i=0;i<40;i++) setTimeout(spawnSparkle,i*180);}
+
+async function startCard(){
+  intro();
+  await typeLines(LINES);
+  setInterval(spawnHeart,1000);
+  setInterval(spawnBalloon,3500);
+  setInterval(spawnSparkle,800);
+}
+function openCard(){
+  opening.style.display="none";
+  card.style.display="block";
+  bgm.play();
+  startCard();
+}
+</script>
+</body>
+</html>
